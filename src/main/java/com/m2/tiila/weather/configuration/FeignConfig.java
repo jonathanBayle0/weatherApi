@@ -2,6 +2,7 @@ package com.m2.tiila.weather.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.m2.tiila.weather.repository.client.OpenWeatherClient;
+import com.m2.tiila.weather.repository.interceptor.OpenWeatherInterceptor;
 import feign.Feign;
 import feign.Logger;
 import feign.jackson.JacksonDecoder;
@@ -17,7 +18,8 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class FeignConfig {
-
+  @Inject
+  private OpenWeatherInterceptor openWeatherInterceptor;
     @Inject
     private ObjectMapper objectMapper;
   @Bean
@@ -26,6 +28,7 @@ public class FeignConfig {
         .encoder(new JacksonEncoder(objectMapper))
         .decoder(new JacksonDecoder(objectMapper))
         .client(new OkHttpClient(getOkhttpClient()))
+        .requestInterceptor(openWeatherInterceptor)
         .logger(new Logger.JavaLogger(FeignConfig.class))
         .logLevel(Logger.Level.FULL)
         .target(OpenWeatherClient.class, "https://api.openweathermap.org/");
