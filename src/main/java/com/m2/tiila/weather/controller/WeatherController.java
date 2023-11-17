@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import static com.m2.tiila.weather.mapper.WeatherMapper.toDto;
 
@@ -19,7 +20,7 @@ public class WeatherController {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response previsions(@PathParam("city") String city) {
-    return Response.ok(toDto(weatherBusiness.getCityWeather(city))).build();
+  public Response previsions(@PathParam("city") String city, @HeaderParam("user") String user) {
+    return Response.ok(toDto(weatherBusiness.getCityWeather(city, user))).build();
   }
 }
