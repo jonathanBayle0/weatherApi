@@ -45,6 +45,9 @@ dependencies {
 	implementation("io.github.openfeign:feign-okhttp")
 	implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
+	implementation("org.springframework.boot:spring-boot-starter-cache")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

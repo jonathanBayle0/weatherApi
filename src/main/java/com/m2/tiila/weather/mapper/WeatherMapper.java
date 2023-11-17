@@ -14,7 +14,6 @@ public class WeatherMapper {
   public static PrevisionEntity toEntity(Model200 dto) {
     PrevisionEntity entity = new PrevisionEntity();
     entity.setTemperature(dto.getMain().getTemp().floatValue());
-//    entity.setDate(Instant.ofEpochMilli(dto.getDt()));
     entity.setCity(dto.getName());
     return entity;
   }
