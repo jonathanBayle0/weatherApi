@@ -1,4 +1,8 @@
 spring:
+  cloud:
+    mvc:
+      token-relay:
+        enabled: false
   h2:
     console.enabled: true
   datasource:
@@ -8,3 +12,6 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  secrets:
+    openweather:
+      token: 3e5a5234f3de4687d48829ea738da013
