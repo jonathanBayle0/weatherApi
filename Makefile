@@ -4,3 +4,5 @@ build:
 	.\gradlew build
 run:
 	.\gradlew bootRun
+check:
+	.\gradlew check

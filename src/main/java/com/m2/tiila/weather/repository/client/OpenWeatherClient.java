@@ -6,7 +6,7 @@ import feign.RequestLine;
 import org.springframework.cache.annotation.Cacheable;
 
 public interface OpenWeatherClient {
-    @Cacheable(value = "weather", key = "#cityName")
+    // @Cacheable(value = "weather", key = "#cityName")
     @RequestLine("GET /data/2.5/weather?q={cityName}&units=metric&appid={token}")
     Model200 getWeather(
             @Param("cityName") String cityName,
